@@ -8,11 +8,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     Custom user model.
     """
-    phone_number = models.CharField(_('شماره تلفن'), max_length=11, unique=True)
-    username = models.CharField(_('نام کاربری'), max_length=25, null=True, blank=True)
-    is_active = models.BooleanField(_('فعال'), default=True)
-    is_admin = models.BooleanField(_('ادمین'), default=False)
-    created_at = models.DateTimeField(_('ایجاد شده در تاریخ'), auto_now_add=True)
+    phone_number = models.CharField(_('Phone Number'), max_length=11, unique=True)
+    username = models.CharField(_('User Name'), max_length=25, null=True, blank=True)
+    is_active = models.BooleanField(_('Is Active'), default=True)
+    is_admin = models.BooleanField(_('Is Admin'), default=False)
+    created_at = models.DateTimeField(_('Created At'), auto_now_add=True)
 
     objects = UserManager()
 
@@ -30,9 +30,9 @@ class Otp(models.Model):
     """
     One Time Password is for register/login and forget password.
     """
-    phone_number = models.CharField(_('شماره تلفن'), max_length=11)
-    code = models.PositiveSmallIntegerField(_('کد یکبار مصرف'))
-    created_at = models.DateTimeField(_('ایجاد شده در تاریخ'), auto_now_add=True)
+    phone_number = models.CharField(_('Phone Number'), max_length=11)
+    code = models.PositiveSmallIntegerField(_('Code'))
+    created_at = models.DateTimeField(_('Created At'), auto_now_add=True)
 
     class Meta:
         unique_together = ('phone_number', 'code')
