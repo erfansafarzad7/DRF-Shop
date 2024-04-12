@@ -65,6 +65,7 @@ class ProductFeature(models.Model):
 class ProductVariation(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     product_model = models.CharField(_('Product Model'), max_length=30, null=True, blank=True)
+    short_description = models.CharField(_('Short Description (50 word)'), max_length=50)
     features = models.ManyToManyField(ProductFeature, verbose_name="Features")
     images = models.ManyToManyField(Images, verbose_name='Product Images')
     price = models.PositiveSmallIntegerField(_('Product Price'), )
