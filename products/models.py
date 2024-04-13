@@ -81,7 +81,7 @@ class ProductVariation(models.Model):
         return f'{self.product.name} {self.product_model}'
 
     def is_available(self):
-        return True if self.quantity >= 1 else False
+        return True if self.quantity >= 1 and self.product.is_available else False
 
     def calc_discount(self):
-        return self.price * (1 - self.discount / 100)
+        return self.price * (1 - self.discount / 100) if self.discount else None
