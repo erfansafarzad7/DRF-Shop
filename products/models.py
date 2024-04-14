@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.utils.safestring import mark_safe
 
 
 class Base(models.Model):
@@ -36,6 +37,20 @@ class Brand(Base):
     pass
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=25, verbose_name='Color Name')
+    code = models.CharField(max_length=10, default='#FF0000', null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def color_tag(self):
+        if self.code is not None:
+            return mark_safe('<p style="background-color:{}">رنگ</p>'.format(self.code))
+        else:
+            return ""
+
+
 class Product(models.Model):
     name = models.CharField(_('Product Name'), max_length=100)
     complete_descriptions = models.TextField(_('Product Descriptions'), max_length=256)
@@ -55,8 +70,9 @@ class AvailableManager(models.Manager):
 
 
 class ProductFeature(models.Model):
-    key = models.CharField(_('Subject'), max_length=30, default='Color')
-    value = models.CharField(_('Subject Value'), max_length=30, default='Black')
+    key = models.CharField(_('Subject'), max_length=30, default='Display Size')
+    value = models.CharField(_('Subject Value'), max_length=30, default='6 inch')
+    # extra_cost = models.PositiveSmallIntegerField(_('Extra Cost For This Option'), null=True, blank=True, default=0)
 
     def __str__(self):
         return f'{self.key} - {self.value}'
@@ -67,6 +83,7 @@ class ProductVariation(models.Model):
     product_model = models.CharField(_('Product Model'), max_length=30, null=True, blank=True)
     short_description = models.CharField(_('Short Description (50 word)'), max_length=50)
     features = models.ManyToManyField(ProductFeature, verbose_name="Features")
+    color = models.ManyToManyField(Color, verbose_name='Product Colors')
     images = models.ManyToManyField(Images, verbose_name='Product Images')
     price = models.PositiveSmallIntegerField(_('Product Price'), )
     discount = models.PositiveSmallIntegerField(_('Product Discount'), default=0)
@@ -83,5 +100,10 @@ class ProductVariation(models.Model):
     def is_available(self):
         return True if self.quantity >= 1 and self.product.is_available else False
 
-    def calc_discount(self):
+    @property
+    def price_with_discount(self):
         return self.price * (1 - self.discount / 100) if self.discount else None
+
+    # def price_with_discount_and_extra(self):
+    #     features_extra_cost = [feature.extra_cost for feature in self.features.all()]
+    #     return (self.price + sum(features_extra_cost)) * self.price_with_discount()

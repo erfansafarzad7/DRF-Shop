@@ -27,6 +27,7 @@ class CartEditView(APIView):
 
         if serializer.is_valid():
             quantity = serializer.validated_data['quantity']
+            color = serializer.validated_data['color']
             product_id = serializer.validated_data['product_id']
             product = get_object_or_404(ProductVariation, id=product_id)
             user = self.request.user
@@ -37,7 +38,8 @@ class CartEditView(APIView):
                     data={"detail": "this item is not available try another one !"})
 
             if cart := Cart.objects.get_or_create(user=user,
-                                                  product=product):
+                                                  product=product,
+                                                  color=color):
                 cart[0].quantity += quantity
                 cart[0].save()
 
@@ -58,6 +60,7 @@ class CartEditView(APIView):
 
         if serializer.is_valid():
             product_id = serializer.validated_data['product_id']
+            color = serializer.validated_data['color']
             product = get_object_or_404(ProductVariation, id=product_id)
             user = self.request.user
 
@@ -66,7 +69,7 @@ class CartEditView(APIView):
                     status=status.HTTP_404_NOT_FOUND,
                     data={"detail": "this item is not available try another one !"})
 
-            if cart := get_object_or_404(Cart, user=user, product=product):
+            if cart := get_object_or_404(Cart, user=user, product=product, color=color):
                 cart.delete()
 
             return Response(

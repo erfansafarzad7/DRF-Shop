@@ -53,13 +53,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(ProductVariation)
 class ProductVariationAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'price', 'discount', 'calc_discount', 'is_available', 'quantity', 'image_tag', 'created_at')
+    list_display = ('product_name', 'price', 'discount', 'price_with_discount', 'is_available', 'quantity', 'image_tag', 'created_at')
     search_fields = ('product__name', 'product__category', 'product__brand')
     list_filter = ('product__category', 'product__brand', 'created_at')    #<------------------------------- caustom_filter by quantity
     # inlines = (ProductFeatureInline, )            #<-------------------------------
 
     fieldsets = (
-        (None, {'fields': ('product', 'product_model', 'short_description', 'features', 'images',)}),
+        (None, {'fields': ('product', 'product_model', 'short_description', 'features', 'color', 'images',)}),
         (None, {'fields': ('price', 'discount', 'quantity')}),
     )
 
@@ -75,6 +75,7 @@ class ProductVariationAdmin(admin.ModelAdmin):
 # admin.site.register(Category)
 # admin.site.register(Brand)
 admin.site.register(ProductFeature)
+admin.site.register(Color)
 
 
 @admin.register(Images, Category, Brand)
