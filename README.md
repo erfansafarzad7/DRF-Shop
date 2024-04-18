@@ -6,7 +6,7 @@ for use this project:
 
 * create an virtual environment, then activate it
 
-- run these commands in project root : 
+- run these commands in **project root** : 
 
   - `pip install -r requirements.txt`
 
@@ -33,7 +33,7 @@ for use this project:
 >  ```
 >    - methods : `["POST", ]`
 >    - body (required) : `["phone_number", "password"]`
->    - response : `a json includs "accsess" and "refresh" with values`
+>    - response : `a json includs "accsess" and "refresh" tokens`
 
 > ---
 
@@ -41,7 +41,7 @@ for use this project:
 >auth/login/refresh/
 >```
 >  - methods : `["POST", ]`
->  - body(required) : `["refresh-token", ]`
+>  - body(required) : `["refresh", ]`
 >  - response : `refresh token`
 
 > ---
@@ -118,15 +118,16 @@ for use this project:
       quantity, 
       is_available, 
       created_at, 
-        product[ id,
-          name,
-          complete_descriptions,
-          is_available,
-          created_at,
-          brand [title, image],
-          image [image, ],
-          category [title, image],
-          ]]
+      product[ 
+        id,
+        name,
+        complete_descriptions,
+        is_available,
+        created_at,
+        brand [title, image],
+        image [image, ],
+        category [title, image],
+        ]]
 
 
 > ---
@@ -154,14 +155,15 @@ products_variations [
       quantity, 
       is_available, 
       created_at, 
-        product[ id,
-          name,
-          complete_descriptions,
-          is_available,
-          created_at,
-          brand [title, image],
-          image [image, ],
-          category [title, image],
+      product[
+        id,
+        name,
+        complete_descriptions,
+        is_available,
+        created_at,
+        brand [title, image],
+        image [image, ],
+        category [title, image],
         ]]
 ```
 
@@ -210,15 +212,15 @@ products_variations [
       quantity, 
       is_available, 
       created_at, 
-        product[
-          id,
-          name,
-          complete_descriptions,
-          is_available,
-          created_at,
-          brand [title, image],
-          image [image, ],
-          category [title, image],
+      product [
+        id,
+        name,
+        complete_descriptions,
+        is_available,
+        created_at,
+        brand [title, image],
+        image [image, ],
+        category [title, image],
         ]]
       
 ```
