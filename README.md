@@ -70,7 +70,7 @@
 >  - methods : `["POST", ]`
 >  - body : `["", ]`
 >  - header : `Bearer {token}`
->  - response : ""
+>  - response : `"confirm message"`
 
 > ---
 
@@ -79,7 +79,7 @@
 > ```
 >  - methods : `["POST", ]`
 >  - body (required) : `["phone_number", "password"]`
->  - response : ""
+>  - response : `"confirm message"`
 
 > ---
 
@@ -88,7 +88,7 @@
 > ```
 >  - methods : `["POST", ]`
 >  - body(required) : `["phone_number", ]`
->  - response : `"send code message"`
+>  - response : `"confirm message"`
 
 > ---
 
@@ -97,8 +97,8 @@
 > ```
 >  - methods : `["PUT", ]`
 >  - body : `["", ]`
->  - session : `["otp", "user"]`    *otp is a 4 digits one time password that sends by email or sms
->  - response : ""
+>  - session : `["otp", "user"]`    *otp is a 4 digits one-time-password that sends by email or sms
+>  - response : `"a confirm message for send otp"`
   
 > ---
 
@@ -107,7 +107,7 @@
 > ```
 >  - methods : `["PUT", ]`
 >  - body : `["old_password", "password1", "password2"]`
->  - response : ""
+>  - response : `"a success message for change password"`
 
 ---
 ---
@@ -119,7 +119,7 @@
 > ```
 >  - methods : `["GET", ]`
 >  - body : `["", ]`
->  - response : `a list of product variations`
+>  - response : `a list of product variations :`
 
 
     products_variations [ 
@@ -156,7 +156,7 @@
 
 > - methods : `["GET", ]`
 > - body : `["", ]`
-> - response : `a single product variation for details`
+> - response : `a single product variation for details :`
 
 ```
 products_variations [ 
@@ -210,7 +210,7 @@ products_variations [
 
 > -  methods : `["GET", ]`
 > -  body : `["", ]`
-> -  response : `a list of carts`
+> -  response : `a list of carts :`
 
 ```
     product_id,
