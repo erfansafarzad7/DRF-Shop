@@ -40,14 +40,21 @@
 ( then fill the inputs )
 
 ---
-# APIs
+
+## Info
+> **Content-Type :** `application/json`
+> 
+> **Base Url :** `/api/...`
+
+## Routes
+### `GET /api/`
 
 
 ### Accounts :
 
->  ```
->  auth/login/ 
->  ```
+> ```
+> /auth/login/ 
+> ```
 >    - methods : `["POST", ]`
 >    - body (required) : `["phone_number", "password"]`
 >    - response : `a json includs "accsess" and "refresh" tokens for header
@@ -56,7 +63,7 @@
 > ---
 
 >```
->auth/login/refresh/
+> /auth/login/refresh/
 >```
 >  - methods : `["POST", ]`
 >  - body(required) : `["refresh", ]`
@@ -65,7 +72,7 @@
 > ---
 
 > ```
-> auth/logout/
+> /auth/logout/
 > ```
 >  - methods : `["POST", ]`
 >  - body : `["", ]`
@@ -75,7 +82,7 @@
 > ---
 
 > ```
-> auth/register/
+> /auth/register/
 > ```
 >  - methods : `["POST", ]`
 >  - body (required) : `["phone_number", "password"]`
@@ -84,7 +91,7 @@
 > ---
 
 > ```
-> auth/forgot_password/
+> /auth/forgot_password/
 > ```
 >  - methods : `["POST", ]`
 >  - body(required) : `["phone_number", ]`
@@ -93,7 +100,7 @@
 > ---
 
 > ```
-> auth/confirm/
+> /auth/confirm/
 > ```
 >  - methods : `["PUT", ]`
 >  - body : `["", ]`
@@ -103,7 +110,7 @@
 > ---
 
 > ```
-> auth/change_password/{user_id}/
+> /auth/change_password/:user_id/
 > ```
 >  - methods : `["PUT", ]`
 >  - body : `["old_password", "password1", "password2"]`
@@ -115,7 +122,7 @@
 ### Products :
 
 > ```
-> products/
+> /products/
 > ```
 >  - methods : `["GET", ]`
 >  - body : `["", ]`
@@ -151,7 +158,7 @@
 > ---
 
 > ```
-> product-detail/{product_id}
+> /product-detail/{product_id}/
 > ```
 
 > - methods : `["GET", ]`
@@ -191,7 +198,7 @@ products_variations [
 ### Category
 
 > ```
-> category/
+> /category/
 > ```
 
 >  - methods : `["GET", ]`
@@ -202,10 +209,8 @@ products_variations [
 ---
 ### Carts
 
-> `carts` :
-
 > ```
-> cart/
+> /cart/
 > ```
 
 > -  methods : `["GET", ]`
@@ -246,7 +251,7 @@ products_variations [
 ---
 
 > ```
-> cart/add-or-remove/
+> /cart/add-or-remove/
 > ```
 
 >  - methods : `["POST", "DELETE"]`
@@ -260,7 +265,7 @@ products_variations [
 ### Dashboard :
 
 > ```
-> dashboard/
+> /dashboard/
 > ```
 
 >  - methods : `["GET", "POST", "PUT"]`
@@ -274,7 +279,7 @@ products_variations [
 ### orders :
 
 > ```
-> orders/
+> /orders/
 > ```
 
 >  - methods : `["GET", "POST", "DELETE"]`
