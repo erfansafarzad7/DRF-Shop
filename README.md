@@ -39,7 +39,7 @@
     - `py manage.py makemigrations`
     - `py manage.py migrate`
     - `py manage.py createsuperuser`
-    - `pu manage.py runserver`
+    - `py manage.py runserver`
 
 ---
 
@@ -170,10 +170,10 @@ products_variations [
  ```
  POST /cart/add-or-remove/
  ```
+>  - body for POST : `["product_id", "quantity", "color", "size"]`
  ```
  DELETE /cart/add-or-remove/
  ```
->  - body for POST : `["product_id", "quantity", "color"]`
 >  - body for DELETE : `["product_id", "color", ]`
 >  - response : `a confirm message for DELETE or POST`
     
@@ -189,10 +189,10 @@ products_variations [
  ```
  POST /dashboard/
  ```
+>  - body for POST : `["first_name", "last_name", "address", "state", "postalcode"]  `
  ```
  PUT /dashboard/
  ```
->  - body for POST : `["first_name", "last_name", "address", "state", "postalcode"]  `
 >  - response : `a success message for POST or PUT`
 
 ---
